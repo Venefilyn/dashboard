@@ -17,6 +17,8 @@ RUN ansible-playbook -vv -c local -i localhost, files/ansible/install-deps.yaml 
 
 COPY packit_dashboard/  packit_dashboard/
 COPY frontend/ frontend/
+COPY pnpm-lock.yaml .
+COPY pnpm-workspace.yaml .
 
 COPY files/ files/
 RUN --mount=type=secret,id=sentry_auth_token export SENTRY_AUTH_TOKEN=$(cat /run/secrets/sentry_auth_token); \
